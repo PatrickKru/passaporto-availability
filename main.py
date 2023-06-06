@@ -7,7 +7,7 @@ from notify_run import Notify
 
 URL = 'https://www.passaportonline.poliziadistato.it/GestioneDisponibilitaAction.do?codop=getDisponibilitaCittadino'
 COOKIES = {
-    'JSESSIONID': 'SESSION_ID'
+    'JSESSIONID': '<SESSION_ID>'
 }
 
 REFRESH_MINS = (15, 20)
