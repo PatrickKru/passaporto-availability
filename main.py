@@ -8,13 +8,14 @@ from notify_run import Notify
 
 URL = 'https://www.passaportonline.poliziadistato.it/GestioneDisponibilitaAction.do?codop=getDisponibilitaCittadino'
 COOKIES = {
-    'AGPID':'AHwhZZoLxwoCjfwyLd87AA$$',
-    'AGPID_FE':'A4h1AygKxwoWRZ91RbMVOQ$$',
-    'JSESSIONID': 'omPc-GGhOG02fTj5gUvzyDwy'
+    'AGPID':'AXbVB5oLxwoy9XIIf5qcBg$$',
+    'AGPID_FE':'A49lASgKxwpvA3pVFkXdUg$$',
+    'JSESSIONID': 'ZANHTzZXjxsswv3N6E5nhxMv'
 }
 
 REFRESH_MINS = (15, 20)
-MAX_DATE = '2023-11-21'
+MAX_DATE = '2023-08-01'
+MIN_DATE = '2023-06-10'
 DESIRED_LOCATIONS=["Commissariato Gallarate","Questura di Varese","Commissariato Busto Arsizio"]
 
 
@@ -44,7 +45,7 @@ def wait():
 
 
 def acceptable(date) -> bool:
-    return date <= MAX_DATE
+    return date <= MAX_DATE and date >= MIN_DATE
 
 
 def start(notify: Notify):
@@ -69,8 +70,8 @@ def main():
     notify = Notify()
     try:
         start(notify)
-    except:
-        print('An exception occurred')
-        notify.send('An exception occurred')
+    except Exception as e:
+        print(f'An exception occurred: {e}')
+        notify.send(f'An exception occurred: {e}')
 if __name__ == '__main__':
     main()
